@@ -5,7 +5,7 @@ from customers_app.models import Customer
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ['name', 'orders', 'uuid']
+        fields = ['name', 'login', 'orders', 'uuid']
 
     def create(self, validated_data):
         new = Customer(**validated_data)
