@@ -1,0 +1,12 @@
+language: python
+pyhton:
+- '3.7'
+install:
+- pip install -r requirements.txt
+script:
+- python3 manage.py test
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: hLwGy/+ocg/Ip0z+OCRbY2QIaaHFeML2s+walYfPASzp3P2ATQmL7ivEk7ZzarypqLL/N/EV/CEy04JRIzif2ZgmezSbalejgjHOZHYsYp91NaaEwJCBOHTRH78OfNDxSWJNDr3P6VHylNRJg67rUHsMIyR0CRydo1UM9G0n/VyB79c9Qo1xXyI/+iLNovXvpI5pmusIsyJ54b0DevhPAn49Z2rxh/V/SXZTL4HotIw/VUa9Fg4YwCvcAqkAW6G9sAaT8tkwHnWZX2So8chUwqIK1mNYGXxGSjcSAprDsE5mTI4hErIc9t5Ydk8PTYSpDsy0a5oyQnvGyyIsuZver+kYZO/7k+uzl0WvBcRR7gM+HvlZjS00kxebpWUVzHyjFnxnyOKIQGg+KphWH+Grl5Adv2ZeckrfBx8ZaF7HG0aZONY8sYFip5kMwc2+SE/Xouy56oA32kIBWAUQPdI5jpTrqzUzciT8Cq+z7CBhW0pZBornqQ9lDhG2LRoHWaKNf9/Hg77miD0UOhY4HbszSIP4zD3OWAK+pSICkNkrXbmBUrZ8yFWqdlkh9oJQOHPCWwTTufV4S6yGdPIQPGOMaCA3zwBLrFd2qS0xfMglTAvTPxE0uoOIxBCaPL95see/KHdZDBA1YRG8tdXPNiHQqFlsIeJg53KICrEU15HsEuw=
+#  app: curs-online-store
