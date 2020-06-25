@@ -1,9 +1,11 @@
 from rest_framework import status
 from rest_framework.views import Response, Request, APIView
 from customers_app.models import Customer
-from customers_app.serializers import CustomerSerializer
+from customers_app.serializers import CustomerSerializer, RegisterSerializer
 from customers_app.requesters.orders_requesters import OrdersRequester
-from rest_framework.generics import ListCreateAPIView
+from customers_app.requesters.requester import Requester
+from customers_app.requesters.authrequester import AuthRequester
+from customers_app.permissions import CustomerAdminPermission, AdminPermission
 '''
 8003 порт
 Информация о покупателе включает в себя информацию о его заказах.
@@ -16,52 +18,41 @@ from rest_framework.generics import ListCreateAPIView
 '''
 
 
-class CustomerList(ListCreateAPIView):
-    serializer_class = CustomerSerializer
+class AllCustomersList(APIView):
+    ORDER_REQUESTER = OrdersRequester()
+    #permission_classes = (AdminPermission,)
 
-    def get_queryset(self):
-        return Customer.objects.all()
+    def get(self, request):
+        customers = Customer.objects.all()
+        serialized_customers = [CustomerSerializer(customer).data for customer in customers]
+        for customer in serialized_customers:
+            if customer['orders']:
+                for i in range(len(customer['orders'])):
+                    order_response = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
+                    customer['orders'][i] = order_response[0].json()
+        return Response(serialized_customers, status=status.HTTP_200_OK)
 
 
 class CustomerDetail(APIView):
     ORDER_REQUESTER = OrdersRequester()
+    permission_classes = (CustomerAdminPermission,)
 
-    def get(self, request, **kwagrs):
-        if 'uuid' in kwagrs:
-            uuid = kwagrs['uuid']
-            try:
-                customer = Customer.objects.get(pk=uuid)
-            except Customer.DoesNotExist:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-            serialized = CustomerSerializer(customer)
-            serialized_data = serialized.data
-            if serialized_data['orders']:
-                for i in range(len(serialized_data['orders'])):
-                    order_response = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
-                    serialized_data['orders'][i] = order_response[0].json()
-            return Response(serialized_data, status=status.HTTP_200_OK)
-        else:
-            customers = Customer.objects.all()
-            serialized_customers = [CustomerSerializer(customer).data for customer in customers]
-            for customer in serialized_customers:
-                if customer['orders']:
-                    for i in range(len(customer['orders'])):
-                        order_response = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
-                        customer['orders'][i] = order_response[0].json()
-            return Response(serialized_customers, status=status.HTTP_200_OK)
-
-    def post(self, request):
-        data = request.data
-        serializer = CustomerSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, uuid):
+    def get(self, request, user_id):
         try:
-            customer = Customer.objects.get(pk=uuid)
+            customer = Customer.objects.get(pk=user_id)
+        except Customer.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serialized = CustomerSerializer(customer)
+        serialized_data = serialized.data
+        if serialized_data['orders']:
+            for i in range(len(serialized_data['orders'])):
+                order_response = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
+                serialized_data['orders'][i] = order_response[0].json()
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
+    def patch(self, request, user_id):
+        try:
+            customer = Customer.objects.get(pk=user_id)
         except Customer.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = CustomerSerializer(instance=customer, data=request.data)
@@ -71,9 +62,9 @@ class CustomerDetail(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, uuid):
+    def delete(self, request, user_id):
         try:
-            customer = Customer.objects.get(uuid=uuid)
+            customer = Customer.objects.get(uuid=user_id)
         except Customer.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         if customer.orders:
@@ -84,3 +75,23 @@ class CustomerDetail(APIView):
                     return Response(status=status.HTTP_404_NOT_FOUND)
         customer.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class RegisterView(APIView):
+    def post(self, request):
+        serialized = RegisterSerializer(data=request.data)
+        serialized.is_valid(raise_exception=True)
+        response, status_code = AuthRequester().register(request.data['username'], request.data['password'])
+        print(response, status_code)
+        if status_code != 201:
+            return response
+        data_from_response = Requester().get_data_from_response(response)
+        print(response.json())
+        user_info, user_status_code = AuthRequester().get_user_info(data_from_response['access'])
+        user_info_data = Requester().get_data_from_response(user_info)
+        print(f'USER ID {user_info_data["id"]}')
+        customer = Customer.objects.create(user_id=user_info_data['id'])
+        customer_json = CustomerSerializer(instance=customer).data
+        ret_data = {'token': data_from_response, 'user': user_info_data, 'customer': customer_json}
+        return Response(ret_data, 201)
+
