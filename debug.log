@@ -1171,3 +1171,232 @@ AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse`
 Watching for file changes with StatReloader
 "POST /register/ HTTP/1.1" 201 625
 /Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers HTTP/1.1" 301 0
+"GET /all_customers/ HTTP/1.1" 200 59
+"GET /all_customers HTTP/1.1" 301 0
+"GET /all_customers/ HTTP/1.1" 200 59
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers HTTP/1.1" 301 0
+Internal Server Error: /all_customers/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 30, in has_permission
+    return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['is_superuser']
+AttributeError: 'AllCustomersList' object has no attribute 'lookup_url_kwarg'
+"GET /all_customers/ HTTP/1.1" 500 15789
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers HTTP/1.1" 301 0
+"GET /all_customers/ HTTP/1.1" 200 59
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /all_customers HTTP/1.1" 301 0
+"GET /all_customers/ HTTP/1.1" 200 59
+"GET /23 HTTP/1.1" 301 0
+"GET /23/ HTTP/1.1" 200 57
+"GET /23/ HTTP/1.1" 200 57
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers/ HTTP/1.1" 200 59
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers/ HTTP/1.1" 200 59
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /all_customers/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 32, in has_permission
+    print(f'smth : {int(view.kwargs[view.lookup_url_kwarg])}')
+AttributeError: 'AllCustomersList' object has no attribute 'lookup_url_kwarg'
+"GET /all_customers/ HTTP/1.1" 500 15728
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers/ HTTP/1.1" 200 59
+Not Found: /all_customers/23/
+"GET /all_customers/23/ HTTP/1.1" 404 2489
+"GET /23/ HTTP/1.1" 200 57
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /23/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 21, in has_permission
+    return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['id'] or auth_json['is_superuser']
+KeyError: 'id'
+"GET /23/ HTTP/1.1" 500 15594
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /23/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 22, in has_permission
+    return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['id'] or auth_json['is_superuser']
+KeyError: 'id'
+"GET /23/ HTTP/1.1" 500 15594
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /23/ HTTP/1.1" 200 57
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /23/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 31, in has_permission
+    return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['id'] or auth_json['is_superuser']
+KeyError: 'id'
+"GET /23/ HTTP/1.1" 500 15598
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /23/
+"GET /23/ HTTP/1.1" 401 58
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /register/
+"POST /register/ HTTP/1.1" 400 82
+"POST /register/ HTTP/1.1" 201 618
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /register/ HTTP/1.1" 201 621
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /register/ HTTP/1.1" 201 649
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /26/
+"GET /26/ HTTP/1.1" 401 183
+Bad Request: /register/
+"POST /register/ HTTP/1.1" 400 36
+Bad Request: /register/
+"POST /register/ HTTP/1.1" 400 36
+"POST /register/ HTTP/1.1" 201 621
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader

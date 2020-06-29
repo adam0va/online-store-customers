@@ -3,6 +3,16 @@ from customers_app.requesters.authrequester import AuthRequester
 from customers_app.requesters.requester import Requester
 
 
+class BaseApiRequestError(Exception):
+    def __init__(self, message: str = 'BaseApiRequestError was raised'):
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+# просматривать информацию обо всех пользователях, удалять может только админ
+# просматривать информацию о конкретном пользователе может он сам и админ
+
 class BaseAuthPermission(BasePermission):
     def _get_token_from_request(self, request):
         return Requester().get_token_from_request(request)
@@ -10,24 +20,27 @@ class BaseAuthPermission(BasePermission):
 
 class CustomerAdminPermission(BasePermission):
     def has_permission(self, request, view):
-        if request.method == 'GET':
-            return True
-        r = AuthRequester()
-        response, status_code = r.get_user_info(r.get_token_from_request(request))
-        auth_json = r.get_data_from_response(response)
+        try:
+            #if request.method == 'GET':
+            #    return True
+            r = AuthRequester()
+            response, status_code = r.get_user_info(r.get_token_from_request(request))
+            auth_json = r.get_data_from_response(response)
+            print(auth_json)
+            try:
+                return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['id'] or auth_json['is_superuser']
+            except KeyError:
+                return False
+        except BaseApiRequestError:
+            return False
 
-        return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['id'] or auth_json['is_superuser']
 
-
-class AdminPermission(BasePermission):
+class IsSuperuser(BaseAuthPermission):
     def has_permission(self, request, view):
-        if request.method == 'GET':
-            return True
-        r = AuthRequester()
-        response, status_code = r.get_user_info(r.get_token_from_request(request))
-        auth_json = r.get_data_from_response(response)
-
-        return int(view.kwargs[view.lookup_url_kwarg]) == auth_json['is_superuser']
+        token = self._get_token_from_request(request)
+        if token is None:
+            return False
+        return AuthRequester().is_superuser(token)[1]
 
 
 class IsAuthenticated(BaseAuthPermission):

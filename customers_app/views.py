@@ -5,7 +5,7 @@ from customers_app.serializers import CustomerSerializer, RegisterSerializer
 from customers_app.requesters.orders_requesters import OrdersRequester
 from customers_app.requesters.requester import Requester
 from customers_app.requesters.authrequester import AuthRequester
-from customers_app.permissions import CustomerAdminPermission, AdminPermission
+from customers_app.permissions import CustomerAdminPermission, IsSuperuser
 '''
 8003 порт
 Информация о покупателе включает в себя информацию о его заказах.
@@ -20,7 +20,7 @@ from customers_app.permissions import CustomerAdminPermission, AdminPermission
 
 class AllCustomersList(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    #permission_classes = (AdminPermission,)
+    #permission_classes = (IsSuperuser,)
 
     def get(self, request):
         customers = Customer.objects.all()
@@ -29,13 +29,16 @@ class AllCustomersList(APIView):
             if customer['orders']:
                 for i in range(len(customer['orders'])):
                     order_response = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
-                    customer['orders'][i] = order_response[0].json()
+                    if order_response != self.ORDER_REQUESTER.BASE_HTTP_ERROR:
+                        customer['orders'][i] = order_response[0].json()
         return Response(serialized_customers, status=status.HTTP_200_OK)
 
 
 class CustomerDetail(APIView):
     ORDER_REQUESTER = OrdersRequester()
     permission_classes = (CustomerAdminPermission,)
+    lookup_field = 'user_id'
+    lookup_url_kwarg = 'user_id'
 
     def get(self, request, user_id):
         try:
@@ -47,7 +50,8 @@ class CustomerDetail(APIView):
         if serialized_data['orders']:
             for i in range(len(serialized_data['orders'])):
                 order_response = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
-                serialized_data['orders'][i] = order_response[0].json()
+                if order_response != self.ORDER_REQUESTER.BASE_HTTP_ERROR:
+                    serialized_data['orders'][i] = order_response[0].json()
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def patch(self, request, user_id):
@@ -90,7 +94,8 @@ class RegisterView(APIView):
         user_info, user_status_code = AuthRequester().get_user_info(data_from_response['access'])
         user_info_data = Requester().get_data_from_response(user_info)
         print(f'USER ID {user_info_data["id"]}')
-        customer = Customer.objects.create(user_id=user_info_data['id'])
+        customer = Customer.objects.create(user_id=user_info_data['id'], name=request.data['name'],
+                                           username=request.data['username'])
         customer_json = CustomerSerializer(instance=customer).data
         ret_data = {'token': data_from_response, 'user': user_info_data, 'customer': customer_json}
         return Response(ret_data, 201)
