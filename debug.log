@@ -1497,3 +1497,122 @@ TypeError: __init__() got an unexpected keyword argument 'status_code'
 Watching for file changes with StatReloader
 Internal Server Error: /register/
 "POST /register/ HTTP/1.1" 500 0
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py", line 88, in post
+    response, status_code = AuthRequester().register(request.data['username'], request.data['password'])
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py", line 22, in register
+    response = self.post_request(self.AUTH_HOST + 'register/', data=data)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/requester.py", line 19, in post_request
+    response = requests.post(url=url, json=data, headers=headers)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/models.py", line 387, in prepare_url
+    raise MissingSchema(error)
+requests.exceptions.MissingSchema: Invalid URL 'rsoi-online-store-auth.herokuapp.com/register/': No schema supplied. Perhaps you meant http://rsoi-online-store-auth.herokuapp.com/register/?
+"POST /register/ HTTP/1.1" 500 17014
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+"POST /register/ HTTP/1.1" 500 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 425, in _error_catcher
+    yield
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 755, in read_chunked
+    chunk = self._handle_chunk(amt)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 699, in _handle_chunk
+    value = self._fp._safe_read(amt)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py", line 612, in _safe_read
+    raise IncompleteRead(b''.join(s), amt)
+http.client.IncompleteRead: IncompleteRead(2786 bytes read, 7454 more expected)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/models.py", line 750, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 560, in stream
+    for line in self.read_chunked(amt, decode_content=decode_content):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 781, in read_chunked
+    self._original_response.close()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/urllib3/response.py", line 443, in _error_catcher
+    raise ProtocolError("Connection broken: %r" % e, e)
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(2786 bytes read, 7454 more expected)', IncompleteRead(2786 bytes read, 7454 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py", line 88, in post
+    response, status_code = AuthRequester().register(request.data['username'], request.data['password'])
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py", line 22, in register
+    response = self.post_request(self.AUTH_HOST + 'register/', data=data)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/requester.py", line 19, in post_request
+    response = requests.post(url=url, json=data, headers=headers)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/sessions.py", line 686, in send
+    r.content
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/models.py", line 828, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/requests/models.py", line 753, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(2786 bytes read, 7454 more expected)', IncompleteRead(2786 bytes read, 7454 more expected))
+"POST /register/ HTTP/1.1" 500 18882
+Internal Server Error: /register/
+"POST /register/ HTTP/1.1" 500 0
