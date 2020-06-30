@@ -2,8 +2,8 @@ from customers_app.requesters.requester import Requester
 
 
 class AuthRequester(Requester):
-    AUTH_HOST = Requester.HOST + ':8004/'
-    #AUTH_HOST = 'https://rsoi-online-store-auth.herokuapp.com/'
+    #AUTH_HOST = Requester.HOST + ':8004/'
+    AUTH_HOST = 'https://rsoi-online-store-auth.herokuapp.com/'
 
     def _create_auth_header(self, token: str):
         #token_type = 'Bearer' if len(token) < 40 else 'Token'
