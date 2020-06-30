@@ -1616,3 +1616,15 @@ requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(27
 "POST /register/ HTTP/1.1" 500 18882
 Internal Server Error: /register/
 "POST /register/ HTTP/1.1" 500 0
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+"POST /register/ HTTP/1.1" 500 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /register/
+"POST /register/ HTTP/1.1" 500 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /register/ HTTP/1.1" 201 656
