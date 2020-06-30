@@ -36,7 +36,7 @@ class AllCustomersList(APIView):
 
 class CustomerDetail(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    permission_classes = (CustomerAdminPermission,)
+    #permission_classes = (CustomerAdminPermission,)
     lookup_field = 'user_id'
     lookup_url_kwarg = 'user_id'
 
@@ -87,8 +87,8 @@ class RegisterView(APIView):
         serialized.is_valid(raise_exception=True)
         response, status_code = AuthRequester().register(request.data['username'], request.data['password'])
         print(response, status_code)
-        if status_code != 201:
-            return response
+        if status_code != Requester().BASE_HTTP_ERROR:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         data_from_response = Requester().get_data_from_response(response)
         print(response.json())
         user_info, user_status_code = AuthRequester().get_user_info(data_from_response['access'])
