@@ -93,10 +93,20 @@ class RegisterView(APIView):
         data_from_response = Requester().get_data_from_response(response)
         print(response.json())
         user_info, user_status_code = AuthRequester().get_user_info(data_from_response['access'])
+        if user_status_code != 200:
+            return Response(status=status_code)
         user_info_data = Requester().get_data_from_response(user_info)
-        print(f'USER ID {user_info_data["id"]}')
-        customer = Customer.objects.create(user_id=user_info_data['id'], name=request.data['name'],
-                                           username=request.data['username'])
+        # при создании пользователя должен создаваться пустой заказ
+        # (а к нему пустой биллинг)
+        order_response, order_status_code = OrdersRequester().post_order()
+        if order_status_code == 201:
+            order_data = Requester().get_data_from_response(order_response)
+            order_uuid = order_data['uuid']
+            customer = Customer.objects.create(user_id=user_info_data['id'], name=request.data['name'],
+                                               username=request.data['username'], orders=[order_uuid])
+        else:
+            customer = Customer.objects.create(user_id=user_info_data['id'], name=request.data['name'],
+                                               username=request.data['username'])
         customer_json = CustomerSerializer(instance=customer).data
         ret_data = {'token': data_from_response, 'user': user_info_data, 'customer': customer_json}
         return Response(ret_data, 201)
