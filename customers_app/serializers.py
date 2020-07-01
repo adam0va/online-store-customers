@@ -12,6 +12,12 @@ class CustomerSerializer(serializers.ModelSerializer):
         new.save()
         return new
 
+    def update(self, instance: Customer, validated_data):
+        for attr, val in validated_data.items():
+            setattr(instance, attr, val)
+        instance.save()
+        return instance
+
 
 class RegisterSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=50, allow_null=False, allow_blank=False)

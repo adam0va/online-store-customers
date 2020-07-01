@@ -28,9 +28,11 @@ class AllCustomersList(APIView):
         for customer in serialized_customers:
             if customer['orders']:
                 for i in range(len(customer['orders'])):
-                    order_response = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
-                    if order_response != self.ORDER_REQUESTER.BASE_HTTP_ERROR:
-                        customer['orders'][i] = order_response[0].json()
+                    order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
+                    print(order_response)
+                    if order_status_code != 200:
+                        return Response(status=order_status_code)
+                    customer['orders'][i] = order_response.json()
         return Response(serialized_customers, status=status.HTTP_200_OK)
 
 
@@ -49,9 +51,10 @@ class CustomerDetail(APIView):
         serialized_data = serialized.data
         if serialized_data['orders']:
             for i in range(len(serialized_data['orders'])):
-                order_response = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
-                if order_response != self.ORDER_REQUESTER.BASE_HTTP_ERROR:
-                    serialized_data['orders'][i] = order_response[0].json()
+                order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
+                if order_status_code != 200:
+                    return Response(status=order_status_code)
+                serialized_data['orders'][i] = order_response.json()
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def patch(self, request, user_id):
@@ -68,7 +71,7 @@ class CustomerDetail(APIView):
 
     def delete(self, request, user_id):
         try:
-            customer = Customer.objects.get(uuid=user_id)
+            customer = Customer.objects.get(user_id=user_id)
         except Customer.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         if customer.orders:
@@ -111,3 +114,29 @@ class RegisterView(APIView):
         ret_data = {'token': data_from_response, 'user': user_info_data, 'customer': customer_json}
         return Response(ret_data, 201)
 
+
+class NewOrderForCustomer(APIView):
+    ORDER_REQUESTER = OrdersRequester()
+
+    def get(self, request, user_id):
+        try:
+            customer = Customer.objects.get(user_id=user_id)
+            print(1111)
+        except Customer.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        new_order_response, new_order_status_code = self.ORDER_REQUESTER.post_order()
+        if new_order_status_code != 201:
+            return Response(status=new_order_status_code)
+        new_order_response_data = self.ORDER_REQUESTER.get_data_from_response(new_order_response)
+        new_order_uuid = new_order_response_data['uuid']
+        serializer = CustomerSerializer(instance=customer).data
+        old_orders = serializer['orders']
+        if old_orders:
+            old_orders.append(new_order_uuid)
+        else:
+            old_orders = [new_order_uuid]
+        new_orders = {'orders':old_orders}
+        print(new_orders)
+        serializer = CustomerSerializer().update(instance=customer, validated_data=new_orders)
+
+        return Response(CustomerSerializer(instance=serializer).data, status=status.HTTP_200_OK)
