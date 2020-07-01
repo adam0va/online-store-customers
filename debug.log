@@ -2329,3 +2329,7 @@ AttributeError: 'NoneType' object has no attribute 'append'
 Watching for file changes with StatReloader
 "GET /create_new_order/23/ HTTP/1.1" 200 93
 "GET /create_new_order/23/ HTTP/1.1" 200 132
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /create_new_order/23/ HTTP/1.1" 200 133

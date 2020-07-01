@@ -139,4 +139,4 @@ class NewOrderForCustomer(APIView):
         print(new_orders)
         serializer = CustomerSerializer().update(instance=customer, validated_data=new_orders)
 
-        return Response(CustomerSerializer(instance=serializer).data, status=status.HTTP_200_OK)
+        return Response(new_order_response_data, status=status.HTTP_200_OK)
