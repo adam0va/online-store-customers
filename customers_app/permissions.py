@@ -21,8 +21,8 @@ class BaseAuthPermission(BasePermission):
 class CustomerAdminPermission(BasePermission):
     def has_permission(self, request, view):
         try:
-            #if request.method == 'GET':
-            #    return True
+            if request.method == 'GET':
+                return True
             r = AuthRequester()
             response, status_code = r.get_user_info(r.get_token_from_request(request))
             auth_json = r.get_data_from_response(response)
@@ -37,10 +37,13 @@ class CustomerAdminPermission(BasePermission):
 
 class IsSuperuser(BaseAuthPermission):
     def has_permission(self, request, view):
+        print(2)
         token = self._get_token_from_request(request)
+        print(f'TOKEN {token}')
+        print(1)
         if token is None:
             return False
-        return AuthRequester().is_superuser(token)[1]
+        return AuthRequester().is_superuser(token)
 
 
 class IsAuthenticated(BaseAuthPermission):

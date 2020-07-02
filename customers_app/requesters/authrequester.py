@@ -2,16 +2,16 @@ from customers_app.requesters.requester import Requester
 
 
 class AuthRequester(Requester):
-    #AUTH_HOST = Requester.HOST + ':8004/'
-    AUTH_HOST = 'https://rsoi-online-store-auth.herokuapp.com/'
+    AUTH_HOST = Requester.HOST + ':8004/'
+    #AUTH_HOST = 'https://rsoi-online-store-auth.herokuapp.com/'
 
-    def _create_auth_header(self, token: str):
+    def _create_auth_header(self, token: str, token_type: str = 'Bearer'):
         #token_type = 'Bearer' if len(token) < 40 else 'Token'
-        token_type = 'Bearer'
+        #token_type = 'Bearer'
         return {'Authorization': f'{token_type} {token}'}
 
-    def get_user_info(self, token):
-        auth_header = self._create_auth_header(token)
+    def get_user_info(self, token, token_type: str = 'Bearer'):
+        auth_header = self._create_auth_header(token, token_type)
         response = self.get_request(self.AUTH_HOST + 'user_info/', headers=auth_header)
         if response is None:
             return self.BASE_HTTP_ERROR
@@ -26,7 +26,11 @@ class AuthRequester(Requester):
 
     def is_superuser(self, token: str):
         response, status_code = self.get_user_info(token)
-        return response['is_superuser']
+        response_data = self.get_data_from_response(response)
+        try:
+            return response_data['is_superuser']
+        except KeyError:
+            return False
 
     def app_get_token(self, app_id: str, app_secret: str):
         data = {

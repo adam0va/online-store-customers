@@ -43,6 +43,7 @@ class Requester:
 
 	def get_token_from_request(self, request):
 		try:
+			print(111)
 			token = request.META['HTTP_AUTHORIZATION']
 			if token[0] == '{':
 				return token

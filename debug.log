@@ -2333,3 +2333,176 @@ Watching for file changes with StatReloader
 /Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
 Watching for file changes with StatReloader
 "GET /create_new_order/23/ HTTP/1.1" 200 133
+Watching for file changes with StatReloader
+Internal Server Error: /all_customers/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 43, in has_permission
+    return AuthRequester().is_superuser(token)[1]
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py", line 29, in is_superuser
+    return response['is_superuser']
+TypeError: 'Response' object is not subscriptable
+"GET /all_customers/ HTTP/1.1" 500 16136
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /all_customers/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 43, in has_permission
+    return AuthRequester().is_superuser(token)[1]
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py", line 30, in is_superuser
+    return response_data['is_superuser']
+KeyError: 'is_superuser'
+"GET /all_customers/ HTTP/1.1" 500 16091
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /all_customers/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 403, in initial
+    self.check_permissions(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py", line 43, in has_permission
+    return AuthRequester().is_superuser(token)[1]
+TypeError: 'bool' object is not subscriptable
+"GET /all_customers/ HTTP/1.1" 500 15940
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/requester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/requester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Not Found: /all_customers/
+"GET /all_customers/ HTTP/1.1" 404 0
+Not Found: /all_customers/
+"GET /all_customers/ HTTP/1.1" 404 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /all_customers/
+"GET /all_customers/ HTTP/1.1" 500 0
+Internal Server Error: /all_customers/
+"GET /all_customers/ HTTP/1.1" 500 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader

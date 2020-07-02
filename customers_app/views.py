@@ -20,9 +20,10 @@ from customers_app.permissions import CustomerAdminPermission, IsSuperuser
 
 class AllCustomersList(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    #permission_classes = (IsSuperuser,)
+    permission_classes = (IsSuperuser,)
 
     def get(self, request):
+        print(self.ORDER_REQUESTER.get_token_from_request(request))
         customers = Customer.objects.all()
         serialized_customers = [CustomerSerializer(customer).data for customer in customers]
         for customer in serialized_customers:
@@ -30,9 +31,8 @@ class AllCustomersList(APIView):
                 for i in range(len(customer['orders'])):
                     order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=customer['orders'][i])
                     print(order_response)
-                    if order_status_code != 200:
-                        return Response(status=order_status_code)
-                    customer['orders'][i] = order_response.json()
+                    if order_status_code == 200:
+                        customer['orders'][i] = order_response.json()
         return Response(serialized_customers, status=status.HTTP_200_OK)
 
 
@@ -52,9 +52,8 @@ class CustomerDetail(APIView):
         if serialized_data['orders']:
             for i in range(len(serialized_data['orders'])):
                 order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
-                if order_status_code != 200:
-                    return Response(status=order_status_code)
-                serialized_data['orders'][i] = order_response.json()
+                if order_status_code == 200:
+                    serialized_data['orders'][i] = order_response.json()
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def patch(self, request, user_id):
@@ -117,6 +116,7 @@ class RegisterView(APIView):
 
 class NewOrderForCustomer(APIView):
     ORDER_REQUESTER = OrdersRequester()
+    permission_classes = (CustomerAdminPermission, )
 
     def get(self, request, user_id):
         try:
