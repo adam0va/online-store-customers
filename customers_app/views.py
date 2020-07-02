@@ -5,7 +5,7 @@ from customers_app.serializers import CustomerSerializer, RegisterSerializer
 from customers_app.requesters.orders_requesters import OrdersRequester
 from customers_app.requesters.requester import Requester
 from customers_app.requesters.authrequester import AuthRequester
-from customers_app.permissions import CustomerAdminPermission, IsSuperuser
+from customers_app.permissions import CustomerAdminPermission, IsSuperuser, IsAuthenticated
 '''
 8003 порт
 Информация о покупателе включает в себя информацию о его заказах.
@@ -20,7 +20,7 @@ from customers_app.permissions import CustomerAdminPermission, IsSuperuser
 
 class AllCustomersList(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    permission_classes = (IsSuperuser,)
+    #permission_classes = (IsSuperuser,)
 
     def get(self, request):
         print(self.ORDER_REQUESTER.get_token_from_request(request))
@@ -38,7 +38,7 @@ class AllCustomersList(APIView):
 
 class CustomerDetail(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    permission_classes = (CustomerAdminPermission,)
+    permission_classes = (IsAuthenticated,)
     lookup_field = 'user_id'
     lookup_url_kwarg = 'user_id'
 
@@ -118,7 +118,7 @@ class RegisterView(APIView):
 
 class NewOrderForCustomer(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    permission_classes = (CustomerAdminPermission, )
+    permission_classes = (IsAuthenticated, )
 
     def get(self, request, user_id):
         try:
