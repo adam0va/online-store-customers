@@ -12,6 +12,7 @@ class AuthRequester(Requester):
 
     def get_user_info(self, token, token_type: str = 'Bearer'):
         auth_header = self._create_auth_header(token, token_type)
+        print(token)
         response = self.get_request(self.AUTH_HOST + 'user_info/', headers=auth_header)
         if response is None:
             return self.BASE_HTTP_ERROR

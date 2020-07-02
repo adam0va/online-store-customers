@@ -38,7 +38,7 @@ class AllCustomersList(APIView):
 
 class CustomerDetail(APIView):
     ORDER_REQUESTER = OrdersRequester()
-    #permission_classes = (CustomerAdminPermission,)
+    permission_classes = (CustomerAdminPermission,)
     lookup_field = 'user_id'
     lookup_url_kwarg = 'user_id'
 

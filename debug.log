@@ -2506,3 +2506,65 @@ Internal Server Error: /all_customers/
 Watching for file changes with StatReloader
 /Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+code 400, message Bad request version ('À\x13À')
+You're accessing the development server over HTTPS, but it only supports HTTP.
+
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 183
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /all_customers/ HTTP/1.1" 200 1047
+Watching for file changes with StatReloader
+"GET /all_customers/32/ HTTP/1.1" 200 104
+Not Found: /all_customers/create_new_order/32/
+"GET /all_customers/create_new_order/32/ HTTP/1.1" 404 2746
+"GET /create_new_order/32/ HTTP/1.1" 200 133
+"GET /all_customers/32/ HTTP/1.1" 200 306

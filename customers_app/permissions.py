@@ -36,27 +36,37 @@ class CustomerAdminPermission(BasePermission):
 
 
 class IsSuperuser(BaseAuthPermission):
+    AUTH_REQUESTER = AuthRequester()
+
     def has_permission(self, request, view):
         print(2)
-        token = self._get_token_from_request(request)
-        print(f'TOKEN {token}')
-        print(1)
+        token = self.AUTH_REQUESTER.get_token_from_request(request)
         if token is None:
             return False
-        return AuthRequester().is_superuser(token)
+        response, response_status_code = self.AUTH_REQUESTER.get_user_info(token)
+        response_data = self.AUTH_REQUESTER.get_data_from_response(response)
+        try:
+            print(response_data['is_superuser'])
+            return response_data['is_superuser']
+        except KeyError:
+            return False
 
 
 class IsAuthenticated(BaseAuthPermission):
+    AUTH_REQUESTER = AuthRequester()
+
     def has_permission(self, request, view):
-        token = self._get_token_from_request(request)
+        token = self.AUTH_REQUESTER.get_token_from_request(request)
         if token is None:
             return False
         return AuthRequester().is_token_valid(token)[1]
 
 
 class IsAppTokenCorrect(BaseAuthPermission):
+    AUTH_REQUESTER = AuthRequester()
+
     def has_permission(self, request, view):
-        token = self._get_token_from_request(request)
+        token = self.AUTH_REQUESTER.get_token_from_request(request)
         if token is None:
             return False
         view.app_access_token = token
