@@ -50,8 +50,9 @@ class CustomerDetail(APIView):
         serialized = CustomerSerializer(customer)
         serialized_data = serialized.data
         if serialized_data['orders']:
+            token = Requester().get_token_from_request(request)
             for i in range(len(serialized_data['orders'])):
-                order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i])
+                order_response, order_status_code = self.ORDER_REQUESTER.get_order(uuid=serialized_data['orders'][i], token=token)
                 if order_status_code == 200:
                     serialized_data['orders'][i] = order_response.json()
         return Response(serialized_data, status=status.HTTP_200_OK)
@@ -74,8 +75,9 @@ class CustomerDetail(APIView):
         except Customer.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         if customer.orders:
+            token = Requester().get_token_from_request(request)
             for order in customer.orders:
-                order_response, order_status_code = self.ORDER_REQUESTER.delete_order(uuid=order)
+                order_response, order_status_code = self.ORDER_REQUESTER.delete_order(uuid=order, token=token)
                 if order_status_code != 204:
                     print(order_status_code)
                     return Response(status=status.HTTP_404_NOT_FOUND)
@@ -124,7 +126,8 @@ class NewOrderForCustomer(APIView):
             print(1111)
         except Customer.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        new_order_response, new_order_status_code = self.ORDER_REQUESTER.post_order()
+        token = Requester().get_token_from_request(request)
+        new_order_response, new_order_status_code = self.ORDER_REQUESTER.post_order(token=token)
         if new_order_status_code != 201:
             return Response(status=new_order_status_code)
         new_order_response_data = self.ORDER_REQUESTER.get_data_from_response(new_order_response)

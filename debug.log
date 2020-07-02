@@ -2568,3 +2568,59 @@ Not Found: /all_customers/create_new_order/32/
 "GET /all_customers/create_new_order/32/ HTTP/1.1" 404 2746
 "GET /create_new_order/32/ HTTP/1.1" 200 133
 "GET /all_customers/32/ HTTP/1.1" 200 306
+Watching for file changes with StatReloader
+Unauthorized: /all_customers/
+"GET /all_customers/ HTTP/1.1" 401 58
+"GET /all_customers/27/ HTTP/1.1" 200 64
+"GET /create_new_order/27/ HTTP/1.1" 200 133
+Not Found: /api/api-token-auth/
+"GET /api/api-token-auth/ HTTP/1.1" 404 2701
+Not Found: /api/api-token-auth/
+"POST /api/api-token-auth/ HTTP/1.1" 404 2702
+Not Found: /
+"GET / HTTP/1.1" 404 2626
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/authrequester.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/api-token-auth/
+"POST /api/api-token-auth/ HTTP/1.1" 404 2702
+Internal Server Error: /create_new_order/27/
+Traceback (most recent call last):
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "/Users/malenkijkotik/Desktop/progs/rsoi/env/lib/python3.7/site-packages/rest_framework/views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/views.py", line 130, in get
+    new_order_response, new_order_status_code = self.ORDER_REQUESTER.post_order(token=token)
+  File "/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py", line 32, in post_order
+    response = self.get_request(self.ORDERS_HOST + str(uuid) + '/', headers=headers)
+NameError: name 'uuid' is not defined
+"GET /create_new_order/27/ HTTP/1.1" 500 16067
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /create_new_order/27/
+"GET /create_new_order/27/ HTTP/1.1" 403 0
+/Users/malenkijkotik/Desktop/progs/rsoi-online-store/online-store-customers/customers_app/requesters/orders_requesters.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /create_new_order/27/ HTTP/1.1" 200 133
