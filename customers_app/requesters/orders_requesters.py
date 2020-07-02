@@ -2,8 +2,8 @@ from customers_app.requesters.requester import Requester
 
 
 class OrdersRequester(Requester):
-    ORDERS_HOST = Requester.HOST + ':8002/'
-    #ORDERS_HOST = 'https://rsoi-online-store-orders.herokuapp.com/'
+    #ORDERS_HOST = Requester.HOST + ':8002/'
+    ORDERS_HOST = 'https://rsoi-online-store-orders.herokuapp.com/'
 
     def get_order(self, uuid):
         response = self.get_request(self.ORDERS_HOST + str(uuid) + '/')
